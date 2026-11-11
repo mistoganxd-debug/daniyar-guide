@@ -872,6 +872,9 @@ const PREPS = [
 {id:'jasmine-cordial', name:'Jasmine Cordial', kind:'Cordial', yield:'~2 L',
  ing:['20 g Jasmine tea','1000 ml Water','1000 g Sugar','16 g Citric acid'],
  how:'Extract jasmine in hot water, strain, dissolve sugar, cool, add citric acid (1 g per 100 ml), bottle. Acid turns a syrup into a cordial — it drinks like lemonade concentrate.', used:['jasmine-hiball']},
+{id:'limoncello', name:'Limoncello (Zero-Proof Lemon Cordial)', kind:'Cordial', yield:'~3 L',
+ ing:['1700 ml Water','2 kg Refined white sugar (fine crystal only, no brown or unrefined)','350 g Lemon zest, no white pith (about 30 lemons)','100 g Lemon purée','20 g Citric acid','4 g Xanthan gum (2 + 2 g)','4 tsp Sugar (2 + 2 tsp, premixed with the xanthan)'],
+ how:'DAY 1: Wash lemons in hot water to remove wax, dry, peel and scrape off every bit of white pith; weigh 350 g zest. Heat water to ~60°C, add sugar in portions and stir until dissolved, do not boil. Off the heat add zest and citric acid, stir until dissolved (never heat zest above 60°C or it turns bitter and cooked). Cool in an ice bath to room temperature (~30 min), then stir in the purée and taste. Transfer with the zest to a lidded container and refrigerate 10–12 h. DAY 2: Strain through a superbag, pressing the zest. Mix 2 g xanthan with 2 tsp sugar, run an immersion blender in the batch and sprinkle the mix in a thin stream, blend ~60 s. Rest 1 h to release air bubbles and check body; if thicker is needed repeat with the remaining 2 g xanthan + 2 tsp sugar and rest 1 h. Bottle, label with date, keep at 2–4°C up to 2 weeks, shake lightly before use. Rules: purée only into cooled syrup; xanthan only after straining. Too acidic? Dilute with an acid-free base (same sugar, water, zest) using base volume = batch volume × (acid added ÷ acid needed − 1); or add 50–100 g sugar (max ~2.3 kg per 1.7 L water); emergency only: ~1.3 g baking soda per 1 g excess acid (up to ~5 g). Test any fix on a 100 ml sample first.', used:[]},
 {id:'apple-cinnamon-shrub', name:'Apple Cinnamon Shrub', kind:'Shrub', yield:'~500 ml',
  ing:['400 g Fresh cut apple','300 g Sugar','15 ml Apple cider vinegar','5 g Cinnamon'],
  how:'Mix apple and sugar, cover, rest 12–24 h. Strain the syrup, add vinegar and cinnamon, refrigerate 2–3 days to infuse, strain out cinnamon, bottle.', used:['hibiscus-milk-punch']},
@@ -2629,7 +2632,7 @@ function openAPrep(i){
 }
 
 /* ---- HYGIENE STANDARD · SAUDI ARABIA (SFDA) ---- */
-const HYGSECS=['Equipment','Glassware','Coffee','Storage','Food Safety','Sources'];
+const HYGSECS=['Equipment','Glassware','Coffee','Storage','Food Safety','Personal Hygiene','Sources'];
 function renderHygiene(){
   app.innerHTML=header()+`
     <div class="eyebrow">Hygiene standard · Saudi Arabia (SFDA)</div>
@@ -2646,6 +2649,7 @@ function hygBody(){
   if(S.hygSec==='Coffee') return hygCoffee();
   if(S.hygSec==='Storage') return hygStorage();
   if(S.hygSec==='Food Safety') return hygFoodSafety();
+  if(S.hygSec==='Personal Hygiene') return hygPersonalHygiene();
   return hygSources();
 }
 function hygEquipment(){
@@ -3032,6 +3036,96 @@ function hygFoodSafety(){
         <li>Use a <b>torch</b> to check dark corners properly.</li>
         <li><b>If you find any sign:</b> report to the manager immediately / contact the pest-control contractor immediately — <b>do not ignore it.</b></li>
       </ul>
+    </div>`;
+}
+function hygPersonalHygiene(){
+  return `
+    <div class="block tip">
+      <div class="bk">6.0 Source <span class="sfda-tag">SFDA Health Education Programme</span></div>
+      <p>Personal hygiene rules from the Saudi Ministry of Municipalities &amp; Housing's official <b>"Health Education Programme for Workers in Food Establishments"</b> — condensed to what actually applies behind a bar.</p>
+    </div>
+
+    <div class="prep-card open"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>6.1 Why personal hygiene matters</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li><b>Many people carry harmful bacteria without knowing it</b> — your own cleanliness is the first line of defense between you and the drink.</li>
+        <li><b>Direct transfer:</b> touching a drink/garnish with dirty hands, touching ready-to-eat garnish without gloves, coughing or sneezing on it.</li>
+        <li><b>Indirect transfer:</b> touching a contaminated surface then the drink, using a dirty utensil, wearing dirty clothes.</li>
+        <li><b>Other routes:</b> exposed wounds, jewelry/accessories, or working while sick.</li>
+      </ul></div>
+    </div>
+
+    <div class="eyebrow">6.2 Before you even start your shift</div>
+    <div class="block">
+      <div class="bk">At home, every day</div>
+      <p>Daily shower, wash hair and beard, brush teeth, keep nails short and clean, put on clean clothes.</p>
+    </div>
+    <div class="block tip">
+      <div class="bk">Do NOT go to work if you have</div>
+      <p>Fever · diarrhea · vomiting · sore throat with fever · jaundice (yellowing of skin/eyes). Tell your supervisor and see a doctor instead of coming in.</p>
+    </div>
+    <div class="prep-card"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>Right before starting</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li>Remove watch and jewelry.</li>
+        <li>Put on work clothes in the designated area.</li>
+        <li>Wash your hands before touching anything in the work area.</li>
+      </ul></div>
+    </div>
+
+    <div class="eyebrow">6.3 Uniform &amp; appearance</div>
+    <div class="prep-card"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>Clothing rules</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li>Clean clothes every day — washable, light-colored, minimal pockets, in good condition, covering most of your outer clothing.</li>
+        <li>Cover head and beard with a clean cap/hairnet when prepping garnish or entering prep/storage areas.</li>
+        <li>No jewelry or watches while working — a common source of both physical and bacterial contamination.</li>
+        <li>Dedicated washable work shoes, kept in good condition.</li>
+        <li>Take off work clothes before stepping outside the workplace (smoke break, an errand outside).</li>
+      </ul></div>
+    </div>
+
+    <div class="eyebrow">6.4 Hand hygiene</div>
+    <div class="block">
+      <div class="bk">When to wash</div>
+      <p>Arriving at work · before handling drinks/garnish/utensils · before putting on gloves and every time you change them · before and after handling raw ingredients · after the bathroom · after touching your body or clothes · after breaks.</p>
+    </div>
+    <div class="prep-card open"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>The 8 steps (min. 20 seconds, warm water + soap)</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li>1 · Wet hands with warm water.</li>
+        <li>2 · Apply enough soap.</li>
+        <li>3 · Rub hands thoroughly.</li>
+        <li>4 · Rub between and around fingers.</li>
+        <li>5 · Rub the back of each hand with the palm of the other.</li>
+        <li>6 · Rinse thoroughly under running water.</li>
+        <li>7 · Dry with paper towels.</li>
+        <li>8 · Dispose of the paper towel in a waste bin — use it, don't touch the tap or bin with your clean hands.</li>
+      </ul></div>
+    </div>
+
+    <div class="eyebrow">6.5 Healthy vs. unhealthy practices</div>
+    <div class="prep-card"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>Do</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li>Use tools (spoons/tongs) instead of bare hands on high-risk/ready-to-eat items; gloves when needed.</li>
+        <li>Change gloves every 30 min, after handling waste, after breaks — wash hands before putting on new ones. Gloves are for food/drink handling only, nothing else.</li>
+        <li>Wear a mask fully covering nose+mouth, a hair cover, arm covers for uncovered-arm garnish work — replace when wet or dirty.</li>
+        <li>Cover wounds/blisters with a waterproof, colored (blue) bandage — report to your supervisor if one falls into a drink.</li>
+        <li>Step away from the bar to sneeze/cough; cover with your arm if you can't step away; wash hands right after.</li>
+        <li>Eat, drink and smoke only in designated staff areas — never at the bar.</li>
+      </ul></div>
+    </div>
+    <div class="prep-card"><div class="ph" onclick="this.parentElement.classList.toggle('open')">
+      <h4>Don't</h4><span style="color:var(--faint)">▾</span></div>
+      <div class="body"><ul class="hyg-list">
+        <li>Wash hands or tools in the same sink used for washing food/drink items, or vice versa.</li>
+        <li>Touch your head, nose, or body, or stroke your hair/beard mid-service.</li>
+        <li>Lick fingers to count or taste, or blow into bags/packages to open them.</li>
+        <li>Leave outerwear or personal belongings in the prep/bar area.</li>
+        <li>Open waste containers by hand.</li>
+        <li>Wear a mask that doesn't fully cover your nose and mouth.</li>
+      </ul></div>
     </div>`;
 }
 function hygSources(){
